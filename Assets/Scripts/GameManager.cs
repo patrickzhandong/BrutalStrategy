@@ -4,20 +4,53 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public BoardManager boardScript;
-
+    public GameObject team1Player;
+    public GameObject team2Player;
+    private GameObject target;
+    private bool playerMoving;
 	// Use this for initialization
 	void Awake () {
         boardScript = GetComponent<BoardManager>();
+        playerMoving = false;
         InitGame();
 		
 	}
     void InitGame()
     {
-        boardScript.SetupScene();
+        //boardScript.SetupScene();
+        
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update () {
+    
+
+        Vector2 rayPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero, 0f);
+            if (hit)
+            {
+                string attackTag = hit.transform.name + "Hp";
+                Debug.Log(hit.transform.name + "starts to attack");
+
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    if (hit)
+                    {
+                        string attackedTag = hit.transform.name + "Hp";
+                        Debug.Log(attackedTag + "being attacked");
+                        GameObject attackTargetHp = GameObject.FindGameObjectWithTag(attackTag);
+                        GameObject attackTarget = GameObject.FindGameObjectWithTag(hit.transform.name);
+                        HealthBarHeartsWhole attackHp = attackTargetHp.GetComponent<HealthBarHeartsWhole>();
+                        attackHp.currentHp -= 2;
+                        if (attackHp.currentHp <= 0)
+                        {
+                            Destroy(attackTarget);
+                            Destroy(attackTargetHp);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
