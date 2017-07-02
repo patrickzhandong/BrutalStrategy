@@ -30,26 +30,28 @@ public class GameManager : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(rayPos, Vector2.zero, 0f);
             if (hit)
             {
-                string attackTag = hit.transform.name + "Hp";
-                Debug.Log(hit.transform.name + "starts to attack");
-
-                if (Input.GetButtonDown("Fire1"))
+                if (!playerMoving)
                 {
-                    if (hit)
-                    {
-                        string attackedTag = hit.transform.name + "Hp";
-                        Debug.Log(attackedTag + "being attacked");
-                        GameObject attackTargetHp = GameObject.FindGameObjectWithTag(attackTag);
-                        GameObject attackTarget = GameObject.FindGameObjectWithTag(hit.transform.name);
-                        HealthBarHeartsWhole attackHp = attackTargetHp.GetComponent<HealthBarHeartsWhole>();
-                        attackHp.currentHp -= 2;
-                        if (attackHp.currentHp <= 0)
-                        {
-                            Destroy(attackTarget);
-                            Destroy(attackTargetHp);
-                        }
-                    }
+                    string attackTag = hit.transform.name + "Hp";
+                    Debug.Log(hit.transform.name + "starts to attack");
+                    playerMoving = true;
                 }
+                else
+                {
+                    playerMoving = false;
+                            string attackedTag = hit.transform.name + "Hp";
+                            Debug.Log(attackedTag + "being attacked");
+                            GameObject attackTargetHp = GameObject.FindGameObjectWithTag(attackedTag);
+                            GameObject attackTarget = GameObject.FindGameObjectWithTag(hit.transform.name);
+                            HealthBarHeartsWhole attackHp = attackTargetHp.GetComponent<HealthBarHeartsWhole>();
+                            attackHp.currentHp -= 2;
+                            if (attackHp.currentHp <= 0)
+                            {
+                                Destroy(attackTarget);
+                                Destroy(attackTargetHp);
+                            }
+                }
+               
             }
         }
     }
