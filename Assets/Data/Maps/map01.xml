@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<MapData>
+	<name>"Some map"</name>
+	<width>5</width>
+	<height>5</height>
+	<tiles>
+		<int>2</int> <int>2</int> <int>2</int> <int>2</int> <int>2</int>
+		<int>0</int> <int>1</int> <int>1</int> <int>1</int> <int>0</int>
+		<int>0</int> <int>1</int> <int>2</int> <int>1</int> <int>0</int>
+		<int>0</int> <int>1</int> <int>1</int> <int>1</int> <int>0</int>
+		<int>0</int> <int>0</int> <int>0</int> <int>0</int> <int>2</int>
+	</tiles>
+</MapData>
