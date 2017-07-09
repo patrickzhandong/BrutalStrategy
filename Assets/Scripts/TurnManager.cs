@@ -32,7 +32,7 @@ public class TurnManager : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown ("space") && !going) {
 			going = true;
-		}
+		} 
 		if (going) {
 			playerList [currentPlayer].moving = true;
 			going = false;

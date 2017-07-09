@@ -20,11 +20,13 @@ public class GameManager : MonoBehaviour {
         InitGame();
 		
 	}
+
     void InitGame()
     {
-        //boardScript.SetupScene();
-        
+        MapManager.getMapManager().initialize();
+        boardScript.SetupScene(MapManager.getMapManager().getMapByIndex(0));
     }
+
     // Update is called once per frame
     void Update () {
     
