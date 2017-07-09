@@ -78,6 +78,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\APGPackage\APG\AudiencePlayersSys.cs" />
+    <Compile Include="Assets\APGPackage\APG\ChatSys.cs" />
+    <Compile Include="Assets\APGPackage\APG\Chatter.cs" />
+    <Compile Include="Assets\APGPackage\APG\Components\InternalSubcomponents\TwitchIRC.cs" />
+    <Compile Include="Assets\APGPackage\APG\Components\InternalSubcomponents\TwitchIRCChat.cs" />
+    <Compile Include="Assets\APGPackage\APG\Components\InternalSubcomponents\TwitchIRCLogic.cs" />
+    <Compile Include="Assets\APGPackage\APG\Components\TwitchNetworking.cs" />
+    <Compile Include="Assets\APGPackage\APG\IRCNetworkRecorder.cs" />
+    <Compile Include="Assets\APGPackage\APG\NetworkMessageHandler.cs" />
+    <Compile Include="Assets\APGPackage\APGSys.cs" />
+    <Compile Include="Assets\APGPackage\ChatterInterface.cs" />
     <Compile Include="Assets\HealthBars\Scripts\HealthBarBottle.cs" />
     <Compile Include="Assets\HealthBars\Scripts\HealthBarHeartsWhole.cs" />
     <Compile Include="Assets\HealthBars\Scripts\HealthBarRadial.cs" />
@@ -87,6 +98,7 @@
     <Compile Include="Assets\HealthBars\Scripts\HealthBarsHearts.cs" />
     <Compile Include="Assets\NameFollow.cs" />
     <Compile Include="Assets\Scripts\BoardManager.cs" />
+    <Compile Include="Assets\Scripts\GameLogic.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\playerController.cs" />
   </ItemGroup>
