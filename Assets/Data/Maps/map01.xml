@@ -3,6 +3,7 @@
 	<name>"Some map"</name>
 	<width>5</width>
 	<height>5</height>
+	<factions>2</factions>
 	<tiles>
 		<int>2</int> <int>2</int> <int>2</int> <int>2</int> <int>2</int>
 		<int>0</int> <int>1</int> <int>1</int> <int>1</int> <int>0</int>
@@ -10,4 +11,42 @@
 		<int>0</int> <int>1</int> <int>1</int> <int>1</int> <int>0</int>
 		<int>0</int> <int>0</int> <int>0</int> <int>0</int> <int>2</int>
 	</tiles>
+	<units>
+		<UnitData>
+			<x>0</x>
+			<y>0</y>
+			<faction>0</faction>
+			<type>MARKSMAN</type>
+		</UnitData>
+		<UnitData>
+			<x>0</x>
+			<y>1</y>
+			<faction>0</faction>
+			<type>GRENADIER</type>
+		</UnitData>
+		<UnitData>
+			<x>0</x>
+			<y>2</y>
+			<faction>0</faction>
+			<type>FENCER</type>
+		</UnitData>
+		<UnitData>
+			<x>4</x>
+			<y>4</y>
+			<faction>1</faction>
+			<type>MARKSMAN</type>
+		</UnitData>
+		<UnitData>
+			<x>4</x>
+			<y>3</y>
+			<faction>1</faction>
+			<type>GRENADIER</type>
+		</UnitData>
+		<UnitData>
+			<x>4</x>
+			<y>2</y>
+			<faction>1</faction>
+			<type>FENCER</type>
+		</UnitData>
+	</units>
 </MapData>

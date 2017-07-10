@@ -12,6 +12,7 @@ public class MapData {
         public enum unitType {MARKSMAN, GRENADIER, FENCER};
         public int x;
         public int y;
+        public int faction;
         public unitType type; 
     };
     
@@ -20,6 +21,8 @@ public class MapData {
     public int width;
     
     public int height;
+
+    public int factions;
     
     [XmlArray("tiles")]
     [XmlArrayItem("int")]
@@ -44,6 +47,11 @@ public class MapData {
         return height;
     }
 
+    public int getNumUnits()
+    {
+        return units.Count;
+    }
+
     public int getTileID(int x, int y)
     {
         try
@@ -55,4 +63,26 @@ public class MapData {
             return -1;
         }
     }
+
+    public int getUnitX(int index)
+    {
+        return units[index].x;
+    }
+
+    public int getUnitY(int index)
+    {
+        return units[index].y;
+    }
+
+    public int getUnitFaction(int index)
+    {
+        return units[index].faction;
+    }
+
+    public UnitData.unitType getUnitType(int index)
+    {
+        return units[index].type;
+    }
 }
+
+

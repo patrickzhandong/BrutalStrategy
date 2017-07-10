@@ -18,19 +18,20 @@ public class NameFollow : MonoBehaviour
     void Start()
     {
         roboPos = robot.transform.position;
-
+        //robot.transform.TransformPoint(roboPos)
         rt = GetComponent<RectTransform>();
         canvasRT = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
-        roboScreenPos = camera.WorldToViewportPoint(robot.transform.TransformPoint(roboPos));
-        rt.anchorMax = roboScreenPos;
-        rt.anchorMin = roboScreenPos;
+        roboScreenPos = camera.WorldToViewportPoint(roboPos);
+        rt.anchorMax = roboScreenPos + (new Vector3(0.5f, 0.5f, 0.5f));
+        rt.anchorMin = roboScreenPos + (new Vector3(0.5f, 0.5f, 0.5f)); ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        roboScreenPos = camera.WorldToViewportPoint(robot.transform.TransformPoint(roboPos));
-        rt.anchorMax = roboScreenPos;
-        rt.anchorMin = roboScreenPos;
+        roboPos = robot.transform.position;
+        roboScreenPos = camera.WorldToViewportPoint(roboPos);
+        rt.anchorMax = roboScreenPos + (new Vector3(0.5f, 0.5f, 0.5f)); ;
+        rt.anchorMin = roboScreenPos + (new Vector3(0.5f, 0.5f, 0.5f)); ;
     }
 }
