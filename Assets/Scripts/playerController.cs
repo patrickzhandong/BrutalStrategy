@@ -9,8 +9,11 @@ public class playerController : MonoBehaviour {
     public const int MAX_HEALTH_DEFAULT = 5;
 
 	public bool moving = false;
+	public bool attacking = false;
 	private float speed = 4f;
 	public Vector3 endPoint;
+	public Vector2 attackPos;
+	public bool alive = true;
 
     // Sprite data
     public Sprite marksman0;
@@ -40,6 +43,12 @@ public class playerController : MonoBehaviour {
 	void Update () {
 		if (moving)
 			Move (endPoint);
+		if (attacking)
+			Attack (getNearestIntPos(attackPos));
+	}
+
+	private Vector3 getNearestIntPos(Vector3 end) {
+		return new Vector3 (Mathf.Round (end.x), Mathf.Round (end.y), Mathf.Round (end.z));
 	}
 
 	public void Move (Vector3 end) {
@@ -52,6 +61,30 @@ public class playerController : MonoBehaviour {
 		} else {
 			moving = false;
 		}
+	}
+
+	public void Attack (Vector2 pos) {
+		Debug.Log (this.transform.name + "starts to attack");
+		RaycastHit2D hit = Physics2D.Raycast (pos, Vector2.zero, 0f);
+		if (hit) {
+			string attackedTag = hit.transform.name + "Hp";
+			Debug.Log (attackedTag + "being attacked");
+
+			GameObject attackedTargetHp = GameObject.FindGameObjectWithTag (attackedTag);
+			GameObject attackedTarget = GameObject.FindGameObjectWithTag (hit.transform.name);
+			HealthBarHeartsWhole attackedHp = attackedTargetHp.GetComponent<HealthBarHeartsWhole> ();
+			attackedHp.currentHp -= 2;
+			if (attackedHp.currentHp <= 0) {
+				Debug.Log (attackedTag + " is killed");
+				attackedTarget.GetComponent<playerController> ().alive = false;
+				Destroy (attackedTarget);
+				Destroy (attackedTargetHp);
+			}
+		} 
+		else {
+			Debug.Log ("attack is missed");
+		}
+		attacking = false;
 	}
 
     /**
